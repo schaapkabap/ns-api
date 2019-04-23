@@ -3,12 +3,35 @@
  */
 package ns.api;
 
+import ns.api.Helper.Apicaller;
+import ns.api.Helper.HttpHandler;
+import org.junit.Assert;
 import org.junit.Test;
+
+import java.io.IOException;
+import java.util.HashMap;
+import java.util.Map;
+
 import static org.junit.Assert.*;
 
-public class LibraryTest {
+public class NsApiTest {
     @Test public void testSomeLibraryMethod() {
-        Library classUnderTest = new Library();
+        NsApi classUnderTest = new NsApi();
         assertTrue("someLibraryMethod should return 'true'", classUnderTest.someLibraryMethod());
     }
+
+    @Test public void testHttpHandler(){
+        Apicaller apicaller = Apicaller.getInstance();
+        assertEquals(apicaller.mainUrl, "https://gateway.apiportal.ns.nl/public-reisinformatie/api/v2/");
+    }
+
+    //this requires an internetconnection
+    @Test public void httpCalltest(){
+        HttpHandler httpHandler = new HttpHandler("a7c993a38dab40019bf30a4c728fec77");
+        Map map=new HashMap();
+
+        assertNotNull("Verify that thing is NOT null", httpHandler.makeServiceCall("stations", map));
+    }
+
 }
+

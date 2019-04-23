@@ -6,17 +6,24 @@ package ns.api;
 import com.google.gson.JsonArray;
 import ns.api.Helper.Apicaller;
 
-public class Library {
+public class NsApi {
     private Apicaller apicaller;
+    private String apiKey;
+
+    public NsApi(String apiKey) {
+        this.apiKey = apiKey;
+
+    }
+
+    public NsApi() {
+
+    }
+
     public boolean someLibraryMethod() {
-        return true;
+        return  true;
     }
 
-    public JsonArray getStations(){
+    public JsonArray getStations() {
         return null;
-    }
-
-    public Library(String apikey){
-
     }
 }
